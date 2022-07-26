@@ -1,11 +1,13 @@
 import email
 from enum import unique
+from itertools import product
 from tabnanny import verbose
 from tkinter import CASCADE
 import uuid
 from pyexpat import model
 from django.db import models
 from django.core import validators
+from django.contrib.auth.models import User
 
 class Author(models.Model):
 
@@ -50,3 +52,24 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+class ExtUser(models.Model):
+
+    desc = models.CharField(max_length=200)
+    is_logged = models.BooleanField(default=True)
+    user = models.OneToOneField(User, on_delete = models.SET_NULL, null=True)
+    def __str__(self):
+        return self.desc
+
+class Product(models.Model):
+
+    name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
+
+class Store(models.Model):
+    
+    name = models.CharField(max_length=200)
+    products = models.ManyToManyField(Product, related_name='stores')
+    def __str__(self):
+        return self.name
