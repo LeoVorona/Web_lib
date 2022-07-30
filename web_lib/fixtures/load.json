@@ -1,0 +1,36 @@
+[
+    {
+        "model": "web_lib.Author",
+        "pk": "ce877c8e-6bd5-4e98-8882-a0bda65b2884",
+        "fields": {
+            "name": "Artem",
+            "age": 25,
+            "email": "example@mail.com",
+            "lit_type" : "b"
+        }
+    },
+    {
+        "model": "web_lib.Book",
+        "pk": 5,
+        "fields": {
+            "title": "Artem",
+            "description": "ssss",
+            "page_num": 100,
+            "author": "ce877c8e-6bd5-4e98-8882-a0bda65b2884",
+            "publisherd": "2022-07-25 20:20:04.591501+00:00"
+        }
+    },
+
+    {
+        "model": "web_lib.Book",
+        "pk": 6,
+        "fields": {
+            "title": "Artem",
+            "description": "ssss",
+            "page_num": 200,
+            "author": "ce877c8e-6bd5-4e98-8882-a0bda65b2884",
+            "publisherd": "2022-07-25 20:20:04.591501+00:00"
+        }
+    }
+    
+]
