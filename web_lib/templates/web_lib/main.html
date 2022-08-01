@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WEB LIB</title>
+    <link rel="stylesheet" href='{% static "web_lib/css/main.css" %}'>
 </head>
 <body>
     <h1>Welcom to WEB LIB</h1>
@@ -14,7 +16,8 @@
         Inventore praesentium repellat eius quasi ipsam molestias ratione explicabo,
         quisquam quam nulla sint optio corporis nemo.
     </p>
-    
+    {% url 'about' as about_url%}
+    <a href={{ about_url }}>Show about</a>
     {% block content %}
 
     {% endblock  %}
