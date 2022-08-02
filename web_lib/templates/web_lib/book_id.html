@@ -1,0 +1,17 @@
+{% extends 'web_lib/main.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Book</h1>
+        <p>Book_ID: {{book.pk}}</p>
+        <p>Author: {{book.author}}</p>
+        <p>Title: {{book.title}}</p>
+        <p>Description: {{book.description}}</p>
+        <p>Page_num: {{book.page_num}}</p>
+        <p>Post_date: {{book.publisherd}}</p>
+        <hr>    
+
+
+    </div>
+{% endblock  %}
