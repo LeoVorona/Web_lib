@@ -36,6 +36,12 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
+    def info(self):
+        name = ('Name: %s' % self.name)
+        age = ('Age: %s' % self.age)
+        lit_type = ('lit_type: %s' % self.get_lit_type_display())
+        return [name, age, lit_type]
+
 
 class Book(models.Model):
 
