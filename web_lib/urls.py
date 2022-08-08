@@ -1,11 +1,12 @@
 from django.urls import path
-from web_lib.views import main, authors, author_id, books, book_id, about
+from web_lib import views
 
 urlpatterns = [
-    path('', main, name = 'web_lib'),
-    path('authors', authors, name = 'authors'),
-    path('author/<uuid:pk>', author_id, name = 'author_id'),
-    path('books', books, name = 'books'),
-    path('book/<int:pk>', book_id, name = 'book_id'),
-    path('about', about, name = 'about'),
+    path('', views.main, name = 'web_lib'),
+    path('authors', views.authors, name = 'authors'),
+    path('author/<uuid:pk>', views.author_id, name = 'author_id'),
+    path('books', views.books, name = 'books'),
+    path('book/<int:pk>', views.book_id, name = 'book_id'),
+    path('about', views.about, name = 'about'),
+    path('create_book', views.create_book, name = 'create_book')
 ]

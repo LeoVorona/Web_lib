@@ -1,21 +1,30 @@
 from urllib import request
 from django.shortcuts import render, redirect
+from django.urls import is_valid_path
+import web_lib
 from web_lib.models import Author, Book
 from django.db.models import Count
 
-from .forms import SearchAuthor, PostAuthor
+from .forms import SearchAuthor, PostAuthor, BookForm
+from django.forms import modelform_factory, widgets
 
 def main(request):
-#if request.method == 'GET':
-    form = SearchAuthor(request.GET)
-    form_post = PostAuthor(request.POST)
-    return render(request, 'web_lib/main.html' ,{"form" : form, "form_post" : form_post})
-# return render(request, 'web_lib/main.html')
+    book_form = BookForm()
+    return render(request, 'web_lib/main.html', {"form" : book_form} )
+    # form = SearchAuthor(request.GET)
+    # form_post = PostAuthor(request.POST)
+    # return render(request, 'web_lib/main.html' ,{"form" : form, "form_post" : form_post})
 
-# def form_search(request):
-#     if request.method == 'GET':
-#         form = SearchAuthor(request.GET)
-#         return render(request, 'web_lib/main.html' ,{"form" : form})
+def create_book(request):
+    book_form = BookForm()
+    if request.method == 'POST':
+        book_form = BookForm(request.POST)
+        if book_form.is_valid():
+            book_form.save()
+            return redirect('books')
+    return render(request, 'web_lib/book_form.html', {"form" : book_form} )
+
+
 
 def authors(request):
     if "author_uuid" in request.GET:
