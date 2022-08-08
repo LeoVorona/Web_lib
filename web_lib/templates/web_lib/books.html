@@ -3,15 +3,18 @@
 {% block content %} 
     <div class="container">
         <h1>Books</h1>
-        <a class="btn btn-sm btn-info" aria-current="page" href="{% url 'create_book' %}">Создать книгу</a>
-        <hr>
+        
         <table class="table table-striped">
+            <a class="btn btn-sm btn-info" aria-current="page" href="{% url 'create_book' %}" >Создать книгу</a>
+
             <thead>
               <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Page_num</th>
-                <th scope="col">Published</th>
+                <th scope="col">Название</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Количество страниц</th>
+                <th scope="col">Дата публикации</th>
+                <th scope="col">Изменить</th>
+                <th scope="col">Удалить</th>
               </tr>
             </thead>
             <tbody>
@@ -24,10 +27,14 @@
                             <td>{{book.description}}</td>
                             <td>{{book.page_num}}</td>
                             <td>{{book.publisherd}}</td>
+                            <td><a class="btn btn-sm btn-info" aria-current="page" href="{% url 'update_book' book.pk %}" >Изменить</a>
+                            </td>
+                            <td><a class="btn btn-sm btn-danger" aria-current="page" href="{% url 'delete_book' book.pk %}" >Удалить</a>
+                            </td>
                         </tr>
                     {% endfor %}
                 {% else %}
-                    <p>No books</p>
+                    <p>Ещё нет ни одной книги.</p>
                 {% endif %}
             </tbody>
           </table>
